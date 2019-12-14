@@ -1,5 +1,6 @@
 package ru.ls.lithosample.ui.widget.spec
 
+import android.graphics.Color
 import com.facebook.litho.sections.Children
 import com.facebook.litho.sections.SectionContext
 import com.facebook.litho.sections.annotations.GroupSectionSpec
@@ -19,7 +20,11 @@ class ListSectionSpec {
 				builder.child(
 					SingleComponentSection.create(c)
 						.key(i.toString())
-						.component(ListItem.create(c).build())
+						.component(ListItem.create(c)
+							.color(if (i % 2 == 0) Color.WHITE else Color.LTGRAY)
+							.title("$i. Hello, world!")
+							.subtitle("Litho tutorial")
+							.build())
 				)
 			}
 			return builder.build()
